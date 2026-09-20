@@ -8,12 +8,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] public InputActionReference moveRightAction;
     [SerializeField] public InputActionReference jumpAction;
 
-    
     [Header("Movement")]
     [SerializeField] private float maxMoveSpeed = 8f;
     [SerializeField] private float acceleration = 50f;
     [SerializeField] private float deceleration = 40f;
-    [SerializeField] private float jumpForce = 12f;  
+    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private bool isGrounded = false;
     [SerializeField] private BoxCollider2D groundCheckBox;
     [SerializeField] private LayerMask groundLayerMask;
@@ -139,5 +138,14 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    public void TeleportPlayer(Vector2 teleportLocation)
+    {
+        playerRigidbody.position = teleportLocation;
+        playerRigidbody.linearVelocity = Vector2.zero;
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+    }
 }
